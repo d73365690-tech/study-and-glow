@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Study & Glow 🎀</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#fffafc;
+    color:#4b3b40;
+    line-height:1.6;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:white;
+    padding:15px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 3px 15px rgba(0,0,0,0.08);
+}
+
+.logo{
+    font-family:'Playfair Display',serif;
+    font-size:25px;
+    color:#d77a9a;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#6d555e;
+    font-weight:500;
+}
+
+nav a:hover{
+    color:#d77a9a;
+}
+
+.hero{
+    min-height:80vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
+    background:linear-gradient(135deg,#fff0f6,#fffafc,#f8efe9);
+}
+
+.hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:60px;
+    color:#c96d91;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:18px;
+    max-width:650px;
+    margin:auto;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:13px 28px;
+    border:none;
+    border-radius:30px;
+    background:#d77a9a;
+    color:white;
+    text-decoration:none;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:15px;
+}
+
+.btn:hover{
+    background:#bd5f80;
+}
+
+section{
+    padding:80px 8%;
+}
+
+.section-title{
+    text-align:center;
+    font-family:'Playfair Display',serif;
+    font-size:40px;
+    color:#c96d91;
+    margin-bottom:45px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.07);
+    text-align:center;
+}
+
+.card h3{
+    color:#c96d91;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#77666c;
+}
+
+.todo-box,
+.timer-box,
+.progress-box,
+.quiz-box,
+.profile-box{
+    max-width:800px;
+    margin:40px auto 0;
+    background:white;
+    padding:35px;
+    border-radius:28px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.07);
+}
+
+.todo-box h3,
+.timer-box h3,
+.progress-box h3,
+.quiz-box h3,
+.profile-box h3{
+    text-align:center;
+    color:#c96d91;
+    margin-bottom:20px;
+}
+
+.todo-input{
+    display:flex;
+    gap:10px;
+}
+
+.todo-input input{
+    flex:1;
+    padding:13px;
+    border:1px solid #ead5dc;
+    border-radius:20px;
+    outline:none;
+    font-family:inherit;
+}
+
+.todo-input button{
+    padding:12px 20px;
+    border:none;
+    border-radius:20px;
+    background:#d77a9a;
+    color:white;
+    cursor:pointer;
+}
+
+#taskList{
+    list-style:none;
+    margin-top:20px;
+}
+
+#taskList li{
+    background:#fff1f6;
+    padding:12px 18px;
+    border-radius:18px;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.delete-btn{
+    border:none;
+    background:#e8a8bc;
+    color:white;
+    border-radius:15px;
+    padding:5px 10px;
+    cursor:pointer;
+}
+
+.timer{
+    text-align:center;
+    font-size:55px;
+    font-weight:600;
+    color:#c96d91;
+    margin:20px;
+}
+
+.timer-buttons{
+    text-align:center;
+}
+
+.timer-buttons button{
+    border:none;
+    padding:10px 20px;
+    margin:5px;
+    border-radius:20px;
+    cursor:pointer;
+    background:#d77a9a;
+    color:white;
+    font-family:inherit;
+}
+
+.progress-bar{
+    width:100%;
+    height:25px;
+    background:#f2e2e8;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    height:100%;
+    width:0%;
+    background:#d77a9a;
+    border-radius:20px;
+    transition:0.5s;
+}
+
+.progress-text{
+    text-align:center;
+    margin-top:12px;
+    font-weight:600;
+}
+
+.tech{
+    background:#fdf7f4;
+}
+
+.tech-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.tech-card{
+    background:white;
+    padding:25px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 7px 20px rgba(0,0,0,0.06);
+}
+
+.tech-card .icon{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.tech-card h3{
+    color:#c96d91;
+}
+
+.video-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    margin-top:40px;
+}
+
+.video-card{
+    background:white;
+    padding:15px;
+    border-radius:20px;
+    box-shadow:0 7px 20px rgba(0,0,0,0.06);
+}
+
+.video-card iframe{
+    width:100%;
+    height:200px;
+    border:none;
+    border-radius:15px;
+}
+
+.video-card h3{
+    color:#c96d91;
+    margin:12px 0;
+}
+
+.complete-btn{
+    border:none;
+    background:#d77a9a;
+    color:white;
+    padding:9px 17px;
+    border-radius:20px;
+    cursor:pointer;
+    font-family:inherit;
+}
+
+.quiz-question{
+    background:#fff5f8;
+    padding:20px;
+    border-radius:20px;
+    margin-bottom:18px;
+}
+
+.quiz-question p{
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.quiz-question label{
+    display:block;
+    margin:7px 0;
+    cursor:pointer;
+}
+
+.quiz-result{
+    text-align:center;
+    margin-top:20px;
+    font-size:20px;
+    font-weight:600;
+    color:#c96d91;
+}
+
+.profile{
+    background:linear-gradient(135deg,#fff5f9,#f8efe9);
+}
+
+.profile-box{
+    text-align:center;
+    max-width:650px;
+}
+
+.avatar{
+    width:120px;
+    height:120px;
+    margin:0 auto 15px;
+    border-radius:50%;
+    background:#f4c5d5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:60px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+.profile-name{
+    font-family:'Playfair Display',serif;
+    font-size:32px;
+    color:#c96d91;
+}
+
+.level{
+    display:inline-block;
+    margin:10px 0 25px;
+    padding:8px 20px;
+    border-radius:20px;
+    background:#fff0f5;
+    color:#c96d91;
+    font-weight:600;
+}
+
+.profile-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.stat{
+    background:#fff8fa;
+    padding:20px 10px;
+    border-radius:20px;
+}
+
+.stat-number{
+    font-size:27px;
+    font-weight:700;
+    color:#c96d91;
+}
+
+.stat-title{
+    font-size:13px;
+}
+
+.glow{
+    background:#fffafc;
+}
+
+.glow-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.glow-card{
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 7px 20px rgba(0,0,0,0.06);
+}
+
+.glow-card h3{
+    color:#c96d91;
+    margin-bottom:10px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    background:#f6e8ed;
+    color:#6d555e;
+}
+
+@media(max-width:800px){
+
+    nav{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    nav ul{
+        gap:12px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .cards,
+    .tech-grid,
+    .video-grid,
+    .glow-grid{
+        grid-template-columns:1fr;
+    }
+
+    .profile-stats{
+        grid-template-columns:1fr;
+    }
+
+    section{
+        padding:60px 5%;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">Study & Glow 🎀</div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#study">Study</a></li>
+        <li><a href="#tech">Tech</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#glow">Glow</a></li>
+    </ul>
+</nav>
+
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+
+    <div>
+        <h1>Study & Glow ✨</h1>
+
+        <p>
+            A cute little space for girls who love studying,
+            technology, self-care and becoming the best version of themselves. 🌸
+        </p>
+
+        <a href="#study" class="btn">Start Your Journey 💗</a>
+    </div>
+
+</section>
+
+
+<!-- STUDY -->
+
+<section id="study">
+
+    <h2 class="section-title">Study Corner 📚</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>📖 Study Planner</h3>
+            <p>Organize your tasks and make your study time easier.</p>
+        </div>
+
+        <div class="card">
+            <h3>⏰ Focus Time</h3>
+            <p>Use the focus timer to study without distractions.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎯 My Goals</h3>
+            <p>Set small goals and celebrate every step forward.</p>
+        </div>
+
+    </div>
+
+
+    <!-- TODO -->
+
+    <div class="todo-box">
+
+        <h3>My To-Do List 📝</h3>
+
+        <div class="todo-input">
+
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Write a task..."
+            >
+
+            <button onclick="addTask()">Add ✨</button>
+
+        </div>
+
+        <ul id="taskList"></ul>
+
+    </div>
+
+
+    <!-- TIMER -->
+
+    <div class="timer-box">
+
+        <h3>Focus Timer ⏰</h3>
+
+        <div class="timer" id="timer">25:00</div>
+
+        <div class="timer-buttons">
+
+            <button onclick="startTimer()">Start</button>
+
+            <button onclick="pauseTimer()">Pause</button>
+
+            <button onclick="resetTimer()">Reset</button>
+
+        </div>
+
+    </div>
+
+
+    <!-- PROGRESS -->
+
+    <div class="progress-box">
+
+        <h3>My Progress 🌸</h3>
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="progressFill">
+            </div>
+
+        </div>
+
+        <div
+            class="progress-text"
+            id="progressText">
+            0%
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TECH -->
+
+<section class="tech" id="tech">
+
+    <h2 class="section-title">Tech for Girls 💻🎀</h2>
+
+    <div class="tech-grid">
+
+        <div class="tech-card">
+
+            <div class="icon">💻</div>
+
+            <h3>Computer Basics</h3>
+
+            <p>
+                Learn the basics of computers and how they work.
+            </p>
+
+        </div>
+
+
+        <div class="tech-card">
+
+            <div class="icon">🌐</div>
+
+            <h3>Websites</h3>
+
+            <p>
+                Learn how websites are created using HTML and CSS.
+            </p>
+
+        </div>
+
+
+        <div class="tech-card">
+
+            <div class="icon">🤖</div>
+
+            <h3>Artificial Intelligence</h3>
+
+            <p>
+                Discover the basics of AI and smart technology.
+            </p>
+
+        </div>
+
+
+        <div class="tech-card">
+
+            <div class="icon">🔐</div>
+
+            <h3>Online Safety</h3>
+
+            <p>
+                Learn simple ways to stay safe online.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- VIDEOS -->
+
+    <h2 class="section-title" style="margin-top:70px;">
+        Learn With Videos 🎬
+    </h2>
+
+    <div class="video-grid">
+
+        <div class="video-card">
+
+            <iframe
+                src="https://www.youtube.com/embed/UB1O30fR-EE"
+                allowfullscreen>
+            </iframe>
+
+            <h3>HTML Tutorial 💻</h3>
+
+            <button
+                class="complete-btn"
+                onclick="completeVideo(this)">
+                Mark as Watched ✓
+            </button>
+
+        </div>
+
+
+        <div class="video-card">
+
+            <iframe
+                src="https://www.youtube.com/embed/1PnVor36_40"
+                allowfullscreen>
+            </iframe>
+
+            <h3>CSS Tutorial 🎨</h3>
+
+            <button
+                class="complete-btn"
+                onclick="completeVideo(this)">
+                Mark as Watched ✓
+            </button>
+
+        </div>
+
+
+        <div class="video-card">
+
+            <iframe
+                src="https://www.youtube.com/embed/zOjov-2OZ0E"
+                allowfullscreen>
+            </iframe>
+
+            <h3>Programming Basics 👩🏻‍💻</h3>
+
+            <button
+                class="complete-btn"
+                onclick="completeVideo(this)">
+                Mark as Watched ✓
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- QUIZ -->
+
+    <div class="quiz-box">
+
+        <h3>Tech Quiz 🧠✨</h3>
+
+
+        <div class="quiz-question">
+
+            <p>1. What does HTML stand for?</p>
+
+            <label>
+                <input type="radio" name="q1" value="correct">
+                HyperText Markup Language
+            </label>
+
+            <label>
+                <input type="radio" name="q1" value="wrong">
+                HighText Machine Language
+            </label>
+
+        </div>
+
+
+        <div class="quiz-question">
+
+            <p>2. What is CSS used for?</p>
+
+            <label>
+                <input type="radio" name="q2" value="correct">
+                Styling websites
+            </label>
+
+            <label>
+                <input type="radio" name="q2" value="wrong">
+                Making phone calls
+            </label>
+
+        </div>
+
+
+        <div class="quiz-question">
+
+            <p>3. What does AI stand for?</p>
+
+            <label>
+                <input type="radio" name="q3" value="correct">
+                Artificial Intelligence
+            </label>
+
+            <label>
+                <input type="radio" name="q3" value="wrong">
+                Automatic Internet
+            </label>
+
+        </div>
+
+
+        <div class="quiz-question">
+
+            <p>4. Which one is a web browser?</p>
+
+            <label>
+                <input type="radio" name="q4" value="correct">
+                Google Chrome
+            </label>
+
+            <label>
+                <input type="radio" name="q4" value="wrong">
+                Photoshop
+            </label>
+
+        </div>
+
+
+        <div class="quiz-question">
+
+            <p>5. What does HTML create?</p>
+
+            <label>
+                <input type="radio" name="q5" value="correct">
+                The structure of a webpage
+            </label>
+
+            <label>
+                <input type="radio" name="q5" value="wrong">
+                Computer electricity
+            </label>
+
+        </div>
+
+
+        <div style="text-align:center;">
+
+            <button class="btn" onclick="checkQuiz()">
+                Check My Score ✨
+            </button>
+
+        </div>
+
+        <div
+            class="quiz-result"
+            id="quizResult">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section class="profile" id="profile">
+
+    <h2 class="section-title">My Profile 👩🏻‍💻🎀</h2>
+
+    <div class="profile-box">
+
+        <div class="avatar">
+            👩🏻‍💻
+        </div>
+
+        <div class="profile-name">
+            Dareen ✨
+        </div>
+
+        <div
+            class="level"
+            id="level">
+            Beginner 🌸
+        </div>
+
+
+        <div class="profile-stats">
+
+            <div class="stat">
+
+                <div
+                    class="stat-number"
+                    id="taskCount">
+                    0
+                </div>
+
+                <div class="stat-title">
+                    Tasks
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div
+                    class="stat-number"
+                    id="quizScore">
+                    0/5
+                </div>
+
+                <div class="stat-title">
+                    Quiz Score
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div
+                    class="stat-number"
+                    id="profileProgress">
+                    0%
+                </div>
+
+                <div class="stat-title">
+                    Progress
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GLOW -->
+
+<section class="glow" id="glow">
+
+    <h2 class="section-title">Glow Corner 🌸</h2>
+
+    <div class="glow-grid">
+
+        <div class="glow-card">
+
+            <h3>💗 Be Kind</h3>
+
+            <p>
+                Be kind to yourself while you learn and grow.
+            </p>
+
+        </div>
+
+
+        <div class="glow-card">
+
+            <h3>💧 Stay Hydrated</h3>
+
+            <p>
+                Drink enough water and remember to take breaks.
+            </p>
+
+        </div>
+
+
+        <div class="glow-card">
+
+            <h3>🌷 Believe in Yourself</h3>
+
+            <p>
+                Small progress is still progress. Keep going!
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    Made with 💗 for girls who love learning & technology ✨
+
+</footer>
+
+
+<script>
+
+/* =========================
+   TODO LIST
+========================= */
+
+function addTask(){
+
+    const input = document.getElementById("taskInput");
+    const taskText = input.value.trim();
+
+    if(taskText === ""){
+        return;
+    }
+
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+        <span>${taskText}</span>
+        <button class="delete-btn" onclick="deleteTask(this)">
+            Delete
+        </button>
+    `;
+
+    document.getElementById("taskList").appendChild(li);
+
+    input.value = "";
+
+    updateProgress();
+}
+
+
+function deleteTask(button){
+
+    button.parentElement.remove();
+
+    updateProgress();
+}
+
+
+/* =========================
+   FOCUS TIMER
+========================= */
+
+let timeLeft = 25 * 60;
+let timerInterval = null;
+
+
+function updateTimer(){
+
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+
+    minutes = String(minutes).padStart(2,"0");
+    seconds = String(seconds).padStart(2,"0");
+
+    document.getElementById("timer").textContent =
+        minutes + ":" + seconds;
+}
+
+
+function startTimer(){
+
+    if(timerInterval !== null){
+        return;
+    }
+
+    timerInterval = setInterval(function(){
+
+        if(timeLeft > 0){
+
+            timeLeft--;
+
+            updateTimer();
+
+        }else{
+
+            clearInterval(timerInterval);
+            timerInterval = null;
+
+            alert("Focus session complete! 🎉💗");
+        }
+
+    },1000);
+}
+
+
+function pauseTimer(){
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+}
+
+
+function resetTimer(){
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+    timeLeft = 25 * 60;
+
+    updateTimer();
+}
+
+
+/* =========================
+   VIDEO PROGRESS
+========================= */
+
+function completeVideo(button){
+
+    if(button.dataset.completed === "true"){
+        return;
+    }
+
+    button.dataset.completed = "true";
+
+    button.textContent = "Completed ✓";
+
+    button.style.background = "#b98fa0";
+
+    updateProgress();
+}
+
+
+/* =========================
+   QUIZ
+========================= */
+
+let latestQuizScore = 0;
+
+
+function checkQuiz(){
+
+    let score = 0;
+
+    for(let i = 1; i <= 5; i++){
+
+        const answer =
+            document.querySelector(
+                `input[name="q${i}"]:checked`
+            );
+
+        if(answer && answer.value === "correct"){
+            score++;
+        }
+    }
+
+    latestQuizScore = score;
+
+    document.getElementById("quizResult").textContent =
+        `You got ${score} / 5 correct! 🎀✨`;
+
+    document.getElementById("quizScore").textContent =
+        score + "/5";
+
+    updateProgress();
+
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+function updateProgress(){
+
+    const tasks =
+        document.querySelectorAll("#taskList li").length;
+
+    const completedVideos =
+        document.querySelectorAll(
+            ".complete-btn[data-completed='true']"
+        ).length;
+
+
+    /*
+       Tasks = 5% each
+       Videos = 15% each
+       Quiz = up to 25%
+    */
+
+    let progress =
+        (tasks * 5) +
+        (completedVideos * 15) +
+        (latestQuizScore * 5);
+
+
+    progress = Math.min(100, progress);
+
+
+    document.getElementById("progressFill").style.width =
+        progress + "%";
+
+    document.getElementById("progressText").textContent =
+        progress + "%";
+
+    document.getElementById("profileProgress").textContent =
+        progress + "%";
+
+
+    document.getElementById("taskCount").textContent =
+        tasks;
+
+
+    /* LEVEL */
+
+    let level = "Beginner 🌸";
+
+    if(progress >= 80){
+
+        level = "Tech Star ⭐";
+
+    }else if(progress >= 50){
+
+        level = "Tech Girl 💻";
+
+    }else if(progress >= 25){
+
+        level = "Rising Girl 🌷";
+    }
+
+
+    document.getElementById("level").textContent =
+        level;
+
+}
+
+
+/* INITIAL UPDATE */
+
+updateTimer();
+updateProgress();
+
+</script>
+
+</body>
+</html>
